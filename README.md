@@ -3,23 +3,23 @@
 ----------------------------------------------------------------------------------
 Install Minikube
 -----------------------------------------------------------------------------------
-curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
- chmod +x minikube
- sudo mv minikube /usr/local/bin/
- Install Helm
- Nginx Ingress Setup with Helm
- curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+ 1. curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+ 2. chmod +x minikube
+ 3. sudo mv minikube /usr/local/bin/
+ 4. Install Helm
+ 5. Nginx Ingress Setup with Helm
+ 6. curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
  
 ---------------------------------------------------------
 Add the Nginx Ingress Controller Helm Repository:
 -----------------------------------------------------------------------------------
-helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-helm repo update
+1. helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+2. helm repo update
 
 ---------------------------------------------------------
 Install Nginx Ingress Controller:
 ---------------------------------------------------------
-helm install my-ingress ingress-nginx/ingress-nginx --set controller.publishService.enabled=true
+1. helm install my-ingress ingress-nginx/ingress-nginx --set controller.publishService.enabled=true
 
 
 ---------------------------------------------------------
@@ -31,6 +31,20 @@ Install Docker
 4. sudo usermod -aG docker $(whoami)
 5. newgrp docker
 6. docker --version
+
+--------------------------------------------------------
+the Kubernetes Version URL
+--------------------------------------------------------
+1. curl -s https://dl.k8s.io/release/stable.txt
+2. VERSION="v1.26.0"
+3. curl -LO "https://dl.k8s.io/release/${VERSION}/bin/linux/amd64/kubectl"
+4. curl -LO "https://dl.k8s.io/release/v1.26.0/bin/linux/amd64/kubectl"
+5. echo "https://dl.k8s.io/release/${VERSION}/bin/linux/amd64/kubectl"
+6. curl -LO "https://dl.k8s.io/release/v1.26.0/bin/linux/amd64/kubectl"
+7. chmod +x ./kubectl
+8. sudo mv ./kubectl /usr/local/bin/kubectl
+9. kubectl version --client
+
 
 ---------------------------------------------------------
 Sample Application Deployment
