@@ -25,12 +25,12 @@ helm install my-ingress ingress-nginx/ingress-nginx --set controller.publishServ
 ---------------------------------------------------------
 Install Docker
 ---------------------------------------------------------
-sudo yum install -y docker-ce docker-ce-cli containerd.io
-sudo systemctl start docker
-sudo systemctl enable docker
- sudo usermod -aG docker $(whoami)
-newgrp docker
-docker --version
+1. sudo yum install -y docker-ce docker-ce-cli containerd.io
+2. sudo systemctl start docker
+3. sudo systemctl enable docker
+4. sudo usermod -aG docker $(whoami)
+5. newgrp docker
+6. docker --version
 
 ---------------------------------------------------------
 Sample Application Deployment
