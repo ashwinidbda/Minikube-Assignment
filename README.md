@@ -55,6 +55,7 @@ spec:
         image: nginxdemos/hello
         ports:
         - containerPort: 80
+        
 ---
 apiVersion: v1
 kind: Service
@@ -66,6 +67,8 @@ spec:
     targetPort: 80
   selector:
     app: hello-world
+
+kubectl apply -f deployment.yaml
 
 ---------------------------------------------------------
 Create an Ingress Resource:
@@ -86,6 +89,8 @@ spec:
             name: hello-world
             port:
               number: 80
+
+  kubectl apply -f ingress-file.yaml
 
 ---------------------------------------------------------
 Ansible Automation
@@ -189,6 +194,9 @@ Ansible Automation
       kubernetes.core.k8s:
         state: present
         definition: "{{ lookup('file', '/tmp/{{ app_name }}-ingress.yaml') }}"
+
+
+ansible-playbook deploy_k8s_app.yml
 
 
 ---------------------------------------------------------
